@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fresh Form Fruits</title>
+<style>
+:root{--bg:#fffaf0;--card:#fff;--tx:#23301f;--mut:#6b7a63;--g:#2e8b3d;--g2:#e6f4e4;--o:#ff8a1f;--r:#d93025;--bd:#eadfc8;--sh:0 4px 14px rgba(0,0,0,.08);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141a12;--card:#1e271b;--tx:#eef3e8;--mut:#9fb096;--g:#5fc46f;--g2:#24331f;--r:#ff6b60;--bd:#33432e;--sh:0 4px 14px rgba(0,0,0,.4);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141a12;--card:#1e271b;--tx:#eef3e8;--mut:#9fb096;--g:#5fc46f;--g2:#24331f;--r:#ff6b60;--bd:#33432e;--sh:0 4px 14px rgba(0,0,0,.4);color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;justify-content:space-between;align-items:center;gap:6px;padding:10px 14px;background:var(--bg);border-bottom:1px solid var(--bd)}
+.logo{font-weight:800;font-size:1.05rem;color:var(--g)}
+nav{display:flex;gap:6px}
+button{font:inherit;cursor:pointer;border:0;border-radius:10px;color:inherit}
+.btn{background:var(--g);color:#fff;padding:10px 14px;font-weight:600}
+.btn.o{background:var(--o)}
+.ghost{background:var(--g2);color:var(--g);padding:8px 12px;font-weight:600}
+.hero{text-align:center;padding:44px 18px 30px;background:linear-gradient(160deg,var(--g2),var(--bg))}
+.hero h1{font-size:clamp(1.8rem,6vw,3rem);margin:8px 0}
+.hero p{max-width:520px;margin:0 auto 18px;color:var(--mut)}
+.big{font-size:3rem;letter-spacing:6px}
+.perks{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:16px;color:var(--mut);font-size:.9rem}
+.perks span{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:6px 14px}
+main{max-width:1000px;margin:0 auto;padding:6px 16px 40px}
+h2{margin:18px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;box-shadow:var(--sh);text-align:center}
+.em{font-size:3.6rem;line-height:1.1}.im{width:100%;height:130px;object-fit:cover;border-radius:12px}
+.card h3{margin:6px 0 2px}
+.pr{color:var(--g);font-weight:700}
+.st{font-size:.82rem;color:var(--mut);margin-bottom:8px}.st.low{color:var(--o);font-weight:700}.st.no{color:var(--r);font-weight:700}
+.q{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px}
+.q button{width:34px;height:34px;background:var(--g2);color:var(--g);font-size:1.2rem;font-weight:700}
+.q b{min-width:40px}
+.card .btn{width:100%}.card.out{opacity:.6}
+#ov{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:9}#ov.on{display:block}
+.panel{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--bg);z-index:10;padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));overflow-y:auto;transform:translateX(105%);transition:transform .25s}
+.panel.on{transform:none}
+.row{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--bd)}
+.row .nm{flex:1}
+input,select{font:inherit;width:100%;padding:9px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--tx);margin:4px 0}
+.ar{display:grid;grid-template-columns:40px 1fr 58px 58px 34px 34px;gap:4px;align-items:center;margin-bottom:6px}
+.ar input{margin:0;padding:6px}
+.tot{display:flex;justify-content:space-between;font-weight:800;font-size:1.1rem;margin:14px 0}
+footer{text-align:center;padding:24px;color:var(--mut);font-size:.85rem}
+.x{float:right;background:none;font-size:1.5rem}
+.note{font-size:.82rem;color:var(--mut)}
+.lk{display:block;text-align:center;text-decoration:none;margin-top:8px;width:100%}
+.tabs{display:flex;gap:8px;margin:8px 0}.tabs .on{background:var(--g);color:#fff}
+.ord{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px;margin-bottom:10px;font-size:.9rem}
+.badge{font-weight:700;color:var(--g)}
+#tt{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--g);color:#fff;padding:10px 18px;border-radius:24px;z-index:20;display:none}
+</style>
+</head>
+<body>
+<header><div class="logo">🍎 Fresh Form Fruits</div>
+<nav><button class="ghost" data-act="home">🏠 Home</button><button class="ghost" data-act="my">📦</button><button class="ghost" id="mg" style="display:none" data-act="adm">⚙️</button><button class="btn" data-act="cart">🛒 <span id="cc">0</span></button></nav></header>
+<section class="hero"><div class="big">🍓🥭🍊</div><h1>Fresh from our farm to your door</h1>
+<p>Hand-picked, naturally ripened fruits straight from our farm. Choose your fruits, pick the quantity and order in a minute.</p>
+<button class="btn o" data-act="shop">Shop fruits</button></section>
+<div class="perks"><span>🌱 Farm fresh</span><span>🚚 Quick delivery</span><span>🚫 No chemicals</span><span>💚 Fair prices</span></div>
+<main><h2 id="shop">Today’s fresh fruits</h2><div class="grid" id="grid"></div></main>
+<footer>© Fresh Form Fruits · <a href="#" data-act="adm" style="color:inherit" onclick="return false">Owner login</a></footer>
+<div id="ov" data-act="close"></div><div id="tt"></div>
+
+<aside class="panel" id="cart"><button class="x" data-act="close">×</button><h2 style="margin-top:0">Your cart</h2>
+<div id="ci"></div>
+<button class="ghost" style="width:100%;margin-top:10px" data-act="more">+ Add more items</button>
+<div class="tot"><span>Total</span><span id="ct">0</span></div>
+<input id="nm" placeholder="Your name"><input id="ph" placeholder="Phone number" inputmode="tel"><input id="ad" placeholder="Delivery address">
+<select id="pm"><option value="COD">Pay: Cash on delivery</option><option value="UPI">Pay: Online (UPI)</option></select>
+<button class="btn o" style="width:100%;margin-top:8px" id="po">Place order</button><div id="res"></div></aside>
+
+<aside class="panel" id="my"><button class="x" data-act="close">×</button><h2 style="margin-top:0">My orders</h2><div id="ml"></div></aside>
+
+<aside class="panel" id="admin"><button class="x" data-act="close">×</button><h2 style="margin-top:0">Owner dashboard</h2>
+<div id="lg"><input id="em" type="email" placeholder="Owner email"><input id="pw" type="password" placeholder="Password"><button class="btn" style="width:100%" id="li">Sign in</button><button class="ghost" style="width:100%;margin-top:8px" id="cr">Create owner account (first time only)</button></div>
+<div id="own"><div class="tabs"><button class="ghost on" data-act="tab" data-t="o">Orders</button><button class="ghost" data-act="tab" data-t="f">Fruits & settings</button></div>
+<div id="tO"></div>
+<div id="tF" style="display:none"><div class="note">Emoji · Name · Price · Stock (kg) · 📷 Photo</div><div id="al"></div>
+<button class="ghost" data-act="add">+ Add fruit</button>
+<h3>Settings</h3><input id="cur" placeholder="Currency symbol, e.g. ₹"><input id="upi" placeholder="Your UPI ID, e.g. name@upi"><input id="un" placeholder="Name shown on UPI payment">
+<button class="btn" style="width:100%;margin-top:8px" data-act="save">Save changes</button>
+<p class="note">Stock is the total kg you have. “Left” goes down automatically as orders come in, and goes back up if you cancel an order.</p></div><button class="ghost" id="lo" style="width:100%;margin-top:10px">Sign out</button></div></aside>
+
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getFirestore,doc,setDoc,updateDoc,addDoc,collection,onSnapshot,query,orderBy} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {getAuth,signInWithEmailAndPassword,createUserWithEmailAndPassword,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+var DEF={cur:'₹',upi:'',un:'',fr:[
+{id:'f1',n:'Mangoes',e:'🥭',p:120,s:50},{id:'f2',n:'Bananas',e:'🍌',p:50,s:80},{id:'f3',n:'Strawberries',e:'🍓',p:300,s:20},
+{id:'f4',n:'Oranges',e:'🍊',p:80,s:60},{id:'f5',n:'Apples',e:'🍎',p:150,s:40},{id:'f6',n:'Grapes',e:'🍇',p:100,s:35},
+{id:'f7',n:'Watermelon',e:'🍉',p:40,s:25},{id:'f8',n:'Pineapple',e:'🍍',p:70,s:30}]};
+var C=DEF,E=null,db=null,uid=null,as=null,isO=false,res={},orders=[],cart={},qty={},mine=[],oSub=false;
+try{mine=JSON.parse(localStorage.getItem('ffmine')||'[]')}catch(e){}
+var $=function(i){return document.getElementById(i)};
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function fr(id){return C.fr.filter(function(f){return f.id==id})[0]}
+function left(id){var f=fr(id),t=0;if(!f)return 0;Object.keys(res).forEach(function(k){var r=res[k];if(r.status!='cancelled'&&r.items&&r.items[id])t+=r.items[id]});return Math.max(0,f.s-t)}
+function toast(m){var t=$('tt');t.textContent=m;t.style.display='block';setTimeout(function(){t.style.display='none'},1800)}
+function img(f,s){return f.img?'<img class="im" alt="'+esc(f.n)+'" src="'+esc(f.img)+'"'+(s?' style="'+s+'"':'')+'>':'<div class="em">'+esc(f.e)+'</div>'}
+function shop(){
+ $('grid').innerHTML=C.fr.map(function(f){var l=left(f.id),o=l<=0,q=Math.min(qty[f.id]||1,Math.max(l,1));
+ return '<div class="card'+(o?' out':'')+'">'+img(f)+'<h3>'+esc(f.n)+'</h3><div class="pr">'+esc(C.cur)+f.p+' / kg</div><div class="st '+(o?'no':l<=5?'low':'')+'">'+(o?'Out of stock':l<=5?'Only '+l+' kg left!':l+' kg left')+'</div>'+
+ (o?'':'<div class="q"><button data-act="m" data-id="'+f.id+'">−</button><b>'+q+' kg</b><button data-act="p" data-id="'+f.id+'">+</button></div><button class="btn" data-act="a" data-id="'+f.id+'">Add to cart</button>')+'</div>'}).join('')}
+function rc(){
+ var ks=Object.keys(cart).filter(function(k){return fr(k)}),tot=0,n=0;
+ ks.forEach(function(k){var l=left(k);if(cart[k]>l)cart[k]=l;if(cart[k]<=0)delete cart[k]});
+ ks=Object.keys(cart).filter(function(k){return fr(k)});
+ $('ci').innerHTML=ks.length?ks.map(function(k){var f=fr(k),q=cart[k];tot+=q*f.p;n+=q;
+ return '<div class="row">'+(f.img?img(f,'width:48px;height:48px'):'<span style="font-size:1.8rem">'+esc(f.e)+'</span>')+'<div class="nm"><b>'+esc(f.n)+'</b><div class="note">'+esc(C.cur)+f.p+' × '+q+' kg = '+esc(C.cur)+f.p*q+'</div></div><div class="q" style="margin:0"><button data-act="cm" data-id="'+k+'">−</button><b style="min-width:24px;text-align:center">'+q+'</b><button data-act="cp" data-id="'+k+'">+</button></div></div>'}).join(''):'<p class="note">Your cart is empty.</p>';
+ $('ct').textContent=C.cur+tot;$('cc').textContent=ks.length}
+function myl(){
+ $('ml').innerHTML=mine.length?mine.map(function(o){var r=res[o.id];return '<div class="ord"><b>#'+esc(o.code)+'</b> · '+new Date(o.ts).toLocaleString()+'<br>Total: '+esc(C.cur)+o.tot+'<br>Status: <span class="badge">'+esc(r?r.status:'received')+'</span></div>'}).join(''):'<p class="note">You have not placed any orders on this device yet.</p>'}
+function ol(){
+ orders.forEach(function(o){o.status=res[o.id]?res[o.id].status:'new'});var live=orders.filter(function(o){return o.status!='cancelled'}),rev=live.reduce(function(a,o){return a+(o.tot||0)},0);
+ $('tO').innerHTML='<p><b>'+orders.length+'</b> orders · Revenue: <b>'+esc(C.cur)+rev+'</b></p>'+(orders.length?orders.map(function(o){
+ return '<div class="ord"><b>#'+esc(o.id.slice(-6).toUpperCase())+'</b> · '+new Date(o.ts).toLocaleString()+'<br>'+esc(o.name)+' · '+esc(o.phone)+'<br>'+esc(o.addr)+'<br>'+(o.items||[]).map(function(i){return esc(i.n)+' × '+i.q+' kg'}).join(', ')+'<br><b>'+esc(C.cur)+o.tot+'</b> · '+(o.pay=='UPI'?'UPI':'Cash on delivery')+
+ '<select data-st="'+o.id+'">'+['new','packed','delivered','cancelled'].map(function(s){return '<option'+(s==o.status?' selected':'')+'>'+s+'</option>'}).join('')+'</select></div>'}).join(''):'<p class="note">No orders yet.</p>')}
+function al(){
+ $('al').innerHTML=E.fr.map(function(f,i){var d=' data-i="'+i+'" ';return '<div class="ar"><input data-f="e"'+d+'value="'+esc(f.e)+'"><input data-f="n"'+d+'value="'+esc(f.n)+'"><input data-f="p"'+d+'type="number" value="'+f.p+'"><input data-f="s"'+d+'type="number" value="'+f.s+'"><label class="ghost" style="text-align:center;padding:6px 0;cursor:pointer">'+(f.img?'✅':'📷')+'<input type="file" accept="image/*" data-img="'+i+'" style="display:none"></label><button class="ghost" data-act="d" data-id="'+i+'">✕</button></div>'}).join('');
+ $('cur').value=E.cur;$('upi').value=E.upi||'';$('un').value=E.un||''}
+function openP(id){$('ov').classList.add('on');$(id).classList.add('on')}
+function closeAll(){$('ov').classList.remove('on');['cart','my','admin'].forEach(function(p){$(p).classList.remove('on')})}
+document.addEventListener('click',function(e){
+ var b=e.target.closest('[data-act]');if(!b)return;var a=b.dataset.act,id=b.dataset.id;
+ if(a=='close')closeAll();
+ if(a=='more'){closeAll();$('shop').scrollIntoView()}
+ if(a=='home'){closeAll();window.scrollTo(0,0)}
+ if(a=='shop')$('shop').scrollIntoView();
+ if(a=='cart'){rc();openP('cart')}
+ if(a=='my'){myl();openP('my')}
+ if(a=='adm'){E=JSON.parse(JSON.stringify(C));al();ol();openP('admin')}
+ if(a=='m'){qty[id]=Math.max(1,(qty[id]||1)-1);shop()}
+ if(a=='p'){qty[id]=Math.min(left(id),(qty[id]||1)+1);shop()}
+ if(a=='a'){var q=qty[id]||1,t=(cart[id]||0)+q;if(t>left(id)){t=left(id);toast('Only '+t+' kg available')}else toast('Added '+q+' kg '+fr(id).n);cart[id]=t;qty[id]=1;shop();rc()}
+ if(a=='cm'){cart[id]--;if(cart[id]<=0)delete cart[id];rc()}
+ if(a=='cp'){if(cart[id]<left(id))cart[id]++;else toast('No more stock');rc()}
+ if(a=='tab'){var f=b.dataset.t=='f';$('tO').style.display=f?'none':'';$('tF').style.display=f?'':'none';document.querySelectorAll('.tabs button').forEach(function(x){x.classList.toggle('on',x==b)})}
+ if(a=='add'){E.fr.push({id:'f'+Date.now(),n:'New fruit',e:'🍐',p:100,s:10});al()}
+ if(a=='d'){if(confirm('Delete this fruit?')){E.fr.splice(id,1);al()}}
+ if(a=='save'){E.cur=$('cur').value||'₹';E.upi=$('upi').value.trim();E.un=$('un').value.trim();
+  
+  setDoc(doc(db,'shop','catalog'),E).then(function(){toast('Saved for everyone')}).catch(function(){alert('Could not save. Please try again.')})}
+});
+document.addEventListener('input',function(e){var d=e.target.dataset;if(d&&d.f&&E){E.fr[d.i][d.f]=(d.f=='p'||d.f=='s')?Math.max(0,+e.target.value||0):e.target.value}});
+document.addEventListener('change',function(e){var t=e.target,d=t.dataset;if(!d)return;
+ if(d.st){var s=t.value;updateDoc(doc(db,'reserved',d.st),{status:s});updateDoc(doc(db,'orders',d.st),{status:s}).then(function(){toast('Status: '+s)})}
+ if(d.img!==undefined&&t.files[0]){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var c=document.createElement('canvas'),k=Math.min(1,360/im.width);c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+  E.fr[d.img].img=c.toDataURL('image/jpeg',.6);al();toast('Photo added. Tap Save changes.')};im.src=r.result};r.readAsDataURL(t.files[0])}});
+$('po').onclick=async function(){
+ var ks=Object.keys(cart).filter(function(k){return fr(k)&&cart[k]>0});
+ if(!ks.length)return alert('Please add some fruits first.');
+ var nm=$('nm').value.trim(),ph=$('ph').value.trim(),ad=$('ad').value.trim();
+ if(!nm||!ph||!ad)return alert('Please fill in your name, phone and address.');
+ 
+ var tot=0,it={},lines=[];
+ for(var i=0;i<ks.length;i++){var k=ks[i],f=fr(k);if(cart[k]>left(k)){rc();return alert('Sorry, '+f.n+' stock changed. Please check your cart.')}
+  tot+=cart[k]*f.p;it[k]=cart[k];lines.push({n:f.n,q:cart[k],p:f.p})}
+ var pay=$('pm').value,ts=Date.now(),id=ts.toString(36)+Math.random().toString(36).slice(2,5),code=id.slice(-6).toUpperCase();
+ $('po').disabled=true;
+ try{var rf=await Promise.race([addDoc(collection(db,'orders'),{ts:ts,name:nm,phone:ph,addr:ad,pay:pay,items:lines,tot:tot,status:'new'}),new Promise(function(_,r){setTimeout(function(){r({code:'timeout - Firestore database not reachable'})},15000)})]);id=rf.id;code=id.slice(-6).toUpperCase();
+  await setDoc(doc(db,'reserved',id),{ts:ts,items:it,status:'new',tot:tot});
+  mine.unshift({id:id,code:code,tot:tot,ts:ts});try{localStorage.setItem('ffmine',JSON.stringify(mine.slice(0,30)))}catch(x){}
+  cart={};rc();
+  var h='<div class="card" style="margin-top:12px"><h3>✅ Order placed!</h3><p>Your order ID: <b>#'+code+'</b><br>Total: <b>'+esc(C.cur)+tot+'</b><br>We will contact you on '+esc(ph)+'.</p>';
+  if(pay=='UPI'&&C.upi)h+='<a class="btn lk" href="upi://pay?pa='+encodeURIComponent(C.upi)+'&pn='+encodeURIComponent(C.un||'Fresh Form Fruits')+'&am='+tot+'&cu=INR&tn='+encodeURIComponent('Order '+code)+'">Pay '+esc(C.cur)+tot+' via UPI</a>';
+  h+='<button class="ghost lk" data-act="more">+ Continue shopping</button></div>';$('res').innerHTML=h}
+ catch(x){alert('Could not place the order: '+(x.code||x.message))}
+ $('po').disabled=false};
+shop();rc();
+var app=initializeApp({apiKey:"AIzaSyC8myTKKDqQwcx6NW22_RNv6KQNQVAGa9Q",authDomain:"fresh-form-fruits.firebaseapp.com",projectId:"fresh-form-fruits",storageBucket:"fresh-form-fruits.firebasestorage.app",messagingSenderId:"1089930252477",appId:"1:1089930252477:web:5eccaab4a7dc7568ada7d4"});
+db=getFirestore(app);var au=getAuth(app),ou=null;
+onSnapshot(doc(db,'shop','catalog'),function(x){if(x.exists())C=Object.assign({},DEF,x.data());shop();rc()},function(){});
+onSnapshot(collection(db,'reserved'),function(q){res={};q.forEach(function(x){res[x.id]=x.data()});shop();rc();myl();if($('admin').classList.contains('on'))ol()},function(){});
+onAuthStateChanged(au,function(u){var v=!!u;$('mg').style.display=v?'':'none';$('lg').style.display=v?'none':'';$('own').style.display=v?'':'none';if(ou){ou();ou=null}orders=[];
+ if(v)ou=onSnapshot(query(collection(db,'orders'),orderBy('ts','desc')),function(q){orders=q.docs.map(function(x){var d=x.data();d.id=x.id;return d});ol()},function(){})});
+$('li').onclick=function(){signInWithEmailAndPassword(au,$('em').value.trim(),$('pw').value).then(function(){$('pw').value=''}).catch(function(e){alert('Login failed: '+e.code)})};
+$('cr').onclick=function(){var p=$('pw').value;if(!$('em').value||p.length<6)return alert('Enter your email and a password of at least 6 characters first.');createUserWithEmailAndPassword(au,$('em').value.trim(),p).then(function(){alert('Owner account created and signed in.')}).catch(function(e){alert('Could not create account: '+e.code)})};
+$('lo').onclick=function(){signOut(au)};
+</script>
+</body>
+</html>
